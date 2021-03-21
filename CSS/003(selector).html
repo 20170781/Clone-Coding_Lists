@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        범용 선택자:  * {color: red;}  -> 전체 
+        타입 선택자:  h1 {color: red;} -> 특정 태그 지정
+        class 선택자: .one {color: red;} -> 특정 클래스 지정(class 선언 되어있어야함) <중첩 o>
+                      .two {border: solid 1px black;}  
+        id 선택자:    #three{font-style:italic;}  -> 특정 id 지정(id 선언 되어있어야함) <중첩 x + 1페이지 1개 id>
+        */
+    </style>
+
+</head>
+<body>
+    <h1 id="three">hello world</h1>
+    <p class="one">hello world</p>
+    <p class="one two">hello world</p>
+    <p class="two">hello world</p>
+</body>
+</html>

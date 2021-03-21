@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .one{
+            /* box-sizing: border-box; 설정 시, 총 사이즈가 200에 맞춰진다.  */   
+            border: solid 20px black;    /* solid: 실선, double: 이중선, dotted: 점선 */
+            border-radius: 20px;           /* 모서리 깎임 */
+            padding: 20px;                 /* 넓이가 280이 된다(padding:20,border:20 포함) */
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            opacity: 0.5;                  /* 투명도 */
+        }
+        .two{
+            border: solid 20px black;    
+            margin: 20px;                  /* 넓이가 240이 된다(border:20 포함) +margin:20 */
+            width: 200px;
+            height: 200px;
+            background-color: green;}
+        .three{
+            border: solid 20px black;
+            width: 200px;                   /* 넓이가 240이 된다(border:20 포함) */
+            height: 200px;
+            background-color: blue;}
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+    <div class="three"></div>
+</body>
+</html>

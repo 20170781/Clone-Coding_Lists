@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            width:  200px;
+            height: 200px;
+            background-color: skyblue;
+            position: relative;         /* absolute: body, relative: 시작점(부모)     +기준점(body)에서 보임 (0이면 겹쳐보임) */
+            top: 10px;                  /* 이동 */
+            left: 10px;
+        }
+        /* 정 가운데 오게 하기 (container 빼고 body 다 지우기)
+        .container{
+            width:  100px;                 width,height가 모두 0이면 전체화면 차지(배경으로 사용)
+            height: 100px;
+            background-color: skyblue;
+            position: absolute;        
+            top: 0px;   
+            bottom: 0px;
+            right: 0px;            
+            left: 0px;
+            margin: auto;
+        } 
+        */
+        .one{
+            width:  100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            margin: -50px;              /* 중앙 정렬*/
+            top: 50%;
+            left: 50%;
+        }
+        .two{
+            width:  100px;
+            height: 100px;
+            background-color: blue;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">         <!-- container가 기준점 -->     
+        <div class="one"></div>
+        <div class="two"></div>
+    </div>
+    <div class="container">            
+        <div class="one"></div>
+        <div class="two"></div>
+    </div>
+
+</body>
+</html>
