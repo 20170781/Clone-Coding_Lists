@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    p{
+      color: red;
+    }
+    /* 주석 */
+  </style>
+</head>
+<body>
+  <p id="one">hello world!!!</p>         <!-- script는 body 마지막에(선언 먼저해야함)  -->
+  <!-- 주석 -->
+  <script>
+    document.getElementById('one').innerHTML ='paullab';    // 문서 전체에서 one이라는 id를 가져오고, 거기에 html로 쓰겠다는 것
+    document.write('hello world write');    // 위와 같은 결과
+    window.alert('hello world alert');      // 경고창
+    console.log('hello world console')      // 개발자 도구 console 창에 기록
+    // 주석
+  </script>
+</body>
+</html>
