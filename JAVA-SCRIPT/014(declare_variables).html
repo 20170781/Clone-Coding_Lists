@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+// 변수선언: var, let, const
+
+// var
+  var i = 10;
+  if (i > 5){          //정상 작동
+    var j = 100;
+  }
+  else{
+    var j = 1000;
+  }
+  document.write(j);
+
+// let, const
+  let k = 10000;      //이게 나옴
+  if (i > 5){
+    let k = 100;      // 작동x 이유: block scope
+  }
+  else {
+    let k = 1000;
+  }
+  document.write(k);
+
+// var 작동x
+  function f() {         // 작동x 이유: 함수 밖에서 실행x (밖에서 생성한것 가져오는거는 ㄱㅊ)
+    var fvar = 10000;
+  }
+  f()
+  document.write(fvar);
+
+  </script>
+</body>
+</html>

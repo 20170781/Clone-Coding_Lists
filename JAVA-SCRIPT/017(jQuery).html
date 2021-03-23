@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    p{
+      background-color: skyblue;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="one">hello world</h1>
+  <p>hello world</p>
+  <button id="two" onclick="f()">눌러!!</button>
+
+<!-- jQuery는
+1. element를 선택할 수 있는 강력한 방법
+2. 선택된 element를 효율적으로 제어할 수 있는 방법
+
+구글에 jquery cdn 검색 후, uncompressed 들어가 복사
+ -->
+ <script
+   src="https://code.jquery.com/jquery-3.4.1.js"
+   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+   crossorigin="anonymous"></script>
+
+  <script>
+  //방법1
+    // function f() {
+    //   $('#one').html('반갑습니다!!!!');               //id: one
+    //   document.getElementById('one').style.backgroundColor='red';
+    // }
+
+  //방법2
+    $('#two').click(
+      function f(){
+        $('p').html('반갑습니다!!!!');                   // p tag
+      }
+    )
+  </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="one">hello world</div>
+  <div class="one two" id="class">hello world two</div>
+  <div class="one two three">hello world three</div>
+  <script>
+    // 1. 단일 element를 반환하는 함수
+    // document.getElementById('id')
+    // document.querySelector('query')
+
+    // 2. 복수의 element를 반환하는 함수
+    // document.getElementById('name')
+    k = document.getElementsByClassName('one')   // 복수 elements를 이용해 class잡고 변경 or text추가
+    console.log(k)
+                                                //개발자 도구
+    document.write(k['0']['innerHTML'])         // 0: div.one 하단에 innerHTML 가져오기
+    document.write('<br>')
+    document.write(k['2']['className'])
+    // document.querySelectorAll('query')
+  </script>
+</body>
+</html>

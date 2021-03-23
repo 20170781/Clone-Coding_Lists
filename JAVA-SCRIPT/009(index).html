@@ -8,9 +8,31 @@
 </head>
 <body>
   <script>
-    var l = [10, 20, 30, 40];
-    document.write(l[2]);     // 배열
+    var 배열 = [10, 20, 30, 40, 50];
+    document.write(배열[0]);     // 10
     document.write('<br>')
+    document.write(배열[1]);     // 20
+    document.write('<br>')
+    document.write(배열.slice(3));     // 40, 50
+    document.write('<br>')
+    document.write(배열.slice(0,3));     // 10, 20, 30
+    document.write('<br>')
+    document.write(배열.pop());     // 50 꺼내기
+    document.write('<br>')
+    document.write(배열);           // 10, 20, 30, 40
+    document.write('<br>')
+    document.write(배열.push(1000));     // 1000 넣기
+    document.write('<br>')
+    document.write(배열);          // 10, 20, 30, 40, 1000
+    document.write('<br>')
+    document.write(배열.join('!'));   //10!!20!!30!!40!!1000 (중간에 넣기)
+    배열.sort()                         // 정렬(사전식): 10, 1000, 20, 30, 40
+    document.write('<br>')
+    document.write(배열);
+    배열.reverse()                     // 역순으로 놓기
+    document.write('<br>')
+    document.write(배열);
+
   </script>
 </body>
 </html>

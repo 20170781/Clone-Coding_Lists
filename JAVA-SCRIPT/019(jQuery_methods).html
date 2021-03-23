@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    p{
+      background-color: skyblue;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="one">hello world one</h1>
+  <h1 class="one two">hello world two</h1>
+  <h1 id="four" class="one two three">hello world three</h1>
+  <h1>hello world four</h1>
+  <h1>hello world five</h1>
+  <h1>hello world six</h1>
+  <p>hello world</p>
+  <button id="two" onclick="f()">눌러!!</button>
+
+ <script
+   src="https://code.jquery.com/jquery-3.4.1.js"
+   integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+   crossorigin="anonymous"></script>
+
+  <script>
+
+    $('#two').click(
+      function f(){
+        $('h1:first').html('<mark>반갑습니다!!!!</mark>').fadeOut(3000).fadeIn(3000);    //정상
+        $('h1:last').text('<mark>반갑습니다!!!!</mark>');     //오류
+      }
+    );
+
+    // 매서드(속성값 변경, DOM 탐색, css, 이벤트, 효과 등)
+    /*
+      .text
+      .html
+      .val
+      .hide
+      .show
+      .fadeIn
+      .fadeOut
+    */
+
+  </script>
+</body>
+</html>

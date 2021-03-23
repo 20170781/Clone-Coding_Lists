@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    p{
+      background-color: skyblue;                /* css에서의 색상 컨트롤 */
+    }
+  </style>
+</head>
+<body>
+  <p>hello world</p>
+  <h1 id="one">hello world</h1>           <!-- 버튼! -->
+
+  <button onclick="f()">눌러!!</button>   <!-- f()에 javascript 코드 or script에서 함수 호출  -->
+  <script>
+    function f() {
+      document.getElementById('one').innerHTML='반갑습니다!';
+      document.getElementById('one').style.backgroundColor='red';   // script에서의 색상 컨트롤
+    }
+  </script>
+</body>
+</html>
