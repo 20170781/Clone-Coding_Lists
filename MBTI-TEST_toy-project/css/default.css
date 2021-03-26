@@ -1,0 +1,8 @@
+/* 파일 전체에 영향 */
+body{
+  background-color: pink;
+}
+
+*{
+  font-family: 'Jua', sans-serif;    /* 구글 폰트 css */
+}

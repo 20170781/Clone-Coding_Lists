@@ -1,0 +1,17 @@
+/* main에 영향 */
+#main{
+  background-color: whitesmoke;
+  width: 80%;
+  /* -> 아무 설정 없이 이렇게 하면 왼쪽 기준 80%, 원하는건 양쪽 10%씩
+  so, html에서 main에 class="mx-auto" 부여 */
+  text-align: center;     /* 문자 위치 조절 */
+  border-radius: 20px;    /* 박스 모서리 둥글게 */
+}
+
+p{
+  font-size: 22px;
+}
+
+h1{
+  font-size: 40px;
+}
