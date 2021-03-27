@@ -5,16 +5,28 @@ const qna = document.querySelector("#qna");     //querySelector로 선택된 mai
 function addAnswer(answerText, qIdx){
   var a1 = document.querySelector('.answerBox');      // a에 answerBox class 부여
   var answer1 = document.createElement('button');     //answer1에 button이라는 html요소를 만들어 넣음
-  answer1.classList.add('answerList');                //answer1 button에 class 추가
+  answer1.classList.add('answerList');                //answer1 button에 'answerList' class 추가
+  answer1.classList.add('my-3');                      //'answerList' 미적요소1
+  answer1.classList.add('py-3');                      //'answerList' 미적요소2
+  answer1.classList.add('mx-auto');                   //'answerList' 중앙 위치 조절
+  answer1.classList.add('fadeIn');                    //'answerList' fadeIn animation 추가
+
   a1.appendChild(answer1);                            //answer1이라는 버튼이 a1에 소속됨
   answer1.innerHTML = answerText
   answer1.addEventListener("click", function(){       //button 작동함수(index.html의 onclick과 다름)
     var children = document.querySelectorAll('.answerList'); // 버튼 3개 선택
     for(let i = 0; i < children.length; i++){
       children[i].disabled = true;        // 버튼 비활성화
-      children[i].style.display = 'none'; // 버튼 하나만 클릭되면 나머지 버튼 사라짐
+      children[i].style.WebkitAnimation = "fadeOut 0.5s";  // 'answerList 모음' fadeOut animation 추가
+      children[i].style.animation = "fadeOut 0.5s";
+
     }
-    goNext(++qIdx);       //반복문 종료 후, qIdx 1증가시켜 goNext함수 실행
+    setTimeout(() => {
+      for(let i = 0; i < children.length; i++){
+        children[i].style.display = 'none'; // 버튼 하나만 클릭되면 나머지 버튼 사라짐
+      }
+      goNext(++qIdx);       //반복문 종료 후, qIdx 1증가시켜 goNext함수 실행
+    }, 450)
   }, false);
 }
 
