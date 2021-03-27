@@ -1,5 +1,6 @@
 const main = document.querySelector("#main");   //변수 선언(const: 상수로서 1개만 선언)
 const qna = document.querySelector("#qna");     //querySelector로 선택된 main, qna의 id를 선택
+const endPoint = 12;                            //질문 개수
 
 // Answer에 버튼 만드는 함수
 function addAnswer(answerText, qIdx){
@@ -37,6 +38,8 @@ function goNext(qIdx){
   for(let i in qnaList[qIdx].a){                 //answer 보여주기
     addAnswer(qnaList[qIdx].a[i].answer, qIdx);  //addAnswer 함수 호출
   }
+  var status = document.querySelector('.statusBar');
+  status.style.width = (100/endPoint) * (qIdx + 1) + '%';     // 달성률 구현
 }
 
 // 애니메이션 함수 정의
