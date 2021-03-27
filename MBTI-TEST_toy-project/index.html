@@ -28,6 +28,7 @@ grid system: 'container class' 안에 선언되어야 사용가능
   <body>
     <!-- grid system을 이용하기 위한 container class -->
     <div class="container">  <!-- 사이즈: 12 -->
+
       <!--##### main 페이지 ##### -->
       <section id="main" class="mx-auto my-5 py-5 px-3">   <!-- 크기 자동 조절을 위한 "mx-auto" from bootstrap -->
         <!-- pt와 pb는 py를 이용하여 동시에 줄 수 있다. -->
@@ -39,17 +40,24 @@ grid system: 'container class' 안에 선언되어야 사용가능
           나만의 MBTI 사이트입니다! <br>
           아래 시작하기 버튼을 눌러 시작해주세요.
         </p>
-        <button type="button" class="btn btn-danger mt-3"
-        onclick="js:begin()">시작하기</button>              <!-- bootstrap / on은 기다리는거, onclick: click을 기다림 -->
+        <button type="button" class="btn btn-danger mt-3" onclick="js:begin()">시작하기</button>      <!-- bootstrap / on은 기다리는거, onclick: click을 기다림 -->
       </section>
+
       <!--##### qna 페이지 ##### -->
       <section id="qna">
-        <p>test</p>
+        <div class="qBox">     <!--innerHTML -->
+
+        </div>
+        <div class="answerBox">    <!--Button -->
+
+        </div>
+
       </section>
       <section id="result">
 
       </section>
       <!-- javsscript 심기(body태그 끝나는 부분) -->
+      <script src="./js/data.js" charset="utf-8"></script>
       <script src="./js/start.js" charset="utf-8"></script>
     </div>
   </body>
