@@ -1,6 +1,23 @@
 const main = document.querySelector("#main");   //변수 선언(const: 상수로서 1개만 선언)
 const qna = document.querySelector("#qna");     //querySelector로 선택된 main, qna의 id를 선택
+const result = document.querySelector("#result"); // result id 선택
 const endPoint = 12;                            //질문 개수
+
+
+// goNext -> addAnswer -> 버튼 클릭 시 goNext -> 질문 종료 후 goResult
+
+// 결과 함수
+function goResult(){
+  qna.style.WebkitAnimation = "fadeOut 1s";  // 1초동안 사라짐
+  qna.style.animation = "fadeOut 1s";
+  setTimeout(() => {                          //설정 시간이 되면 실행
+    result.style.WebkitAnimation ="fadeIn 1s";   //0.45초 이후 result 1초동안 나타나면서, setTimeout실행하며 0.45초 후 qna 사라짐
+    result.style.animation = "fadeIn 1s";
+    setTimeout(() => {
+      qna.style.display = "none";            //qna 사라지기
+      result.style.display = "block";        //result 나타나기
+    }, 450)})
+  }
 
 // Answer에 버튼 만드는 함수
 function addAnswer(answerText, qIdx){
@@ -33,6 +50,9 @@ function addAnswer(answerText, qIdx){
 
 // qna 함수
 function goNext(qIdx){
+  if (qIdx === endPoint){
+    goResult();
+  }
   var q1 = document.querySelector('.qBox');      // q1 class=qBox인 것
   q1.innerHTML = qnaList[qIdx].q;                //data.js에 있는 qnaList의 첫번째 요소의 q를 q1의 innerHTML에 넣어줌(qIdx가 1씩 증가 필요)
   for(let i in qnaList[qIdx].a){                 //answer 보여주기
