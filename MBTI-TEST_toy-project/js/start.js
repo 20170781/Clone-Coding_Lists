@@ -2,7 +2,7 @@ const main = document.querySelector("#main");     //변수 선언(const: 상수�
 const qna = document.querySelector("#qna");       //querySelector로 선택된 main, qna의 id를 선택
 const result = document.querySelector("#result"); // result id 선택
 const endPoint = 12;                              //질문 개수
-const select = [];                                //배열 생성
+const select = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];                                //배열 생성
 
 // goNext -> addAnswer -> 버튼 클릭 시 goNext -> 질문 종료 후 goResult
 
@@ -58,7 +58,11 @@ function addAnswer(answerText, qIdx, idx){            // idx는 goNext에서 i�
       children[i].style.animation = "fadeOut 0.5s";
     }
     setTimeout(() => {
-      select[qIdx] = idx;
+      var target = qnaList[qIdx].a[idx].type;          // qIdx번째 질문에 대한 사용자의 idx번째 답의 type
+      for(let i = 0; i < target.type.length; i++){
+        select[target[i]] += 1;                        // 사용자가 버튼 클릭 시, 12간지 순서대로 해당 target의 값이 1씩 증가
+      }
+
       for(let i = 0; i < children.length; i++){
         children[i].style.display = 'none'; // 버튼 하나만 클릭되면 나머지 버튼 사라짐
       }
@@ -83,44 +87,10 @@ function goResult(){
 
 // 결과 알고리즘 함수
 function calResult(){
-  var pointArray = [
-    { name: 'mouse', value: 0, key: 0},
-    { name: 'cow', value: 0, key: 1},
-    { name: 'tiger', value: 0, key: 2},
-    { name: 'rabiit', value: 0, key: 3},
-    { name: 'dragon', value: 0, key: 4},
-    { name: 'snake', value: 0, key: 5},
-    { name: 'horse', value: 0, key: 6},
-    { name: 'sheep', value: 0, key: 7},
-    { name: 'monkey', value: 0, key: 8},
-    { name: 'chick', value: 0, key: 9},
-    { name: 'dog', value: 0, key: 10},
-    { name: 'pig', value: 0, key: 11}
-  ]
-
-  for(let i = 0; i < endPoint; i++){                //질문 1개당 1번씩
-    var target = qnaList[i].a[select[i]];           //target에 qnaList의 i번째 질문의 a(answer 모임)에서 사용자가 선택한 answer 저장
-    for(let j = 0; j < target.type.length; j++){         //해당 type에 대해 반복(선택한 answer 내 동물들)
-      for(let k = 0; k < pointArray.length; k++){   //12번 반복
-        if(target.type[j] === pointArray[k].name){  //사용자 선택 동물 == k번째 동물이면 value + 1
-          pointArray[k].value += 1;
-        }
-      }
-    }
-  }
-
-  var resultArray = pointArray.sort(function(a, b){   //value 높은순 정렬
-    if(a.value > b.value){
-      return -1;
-    }
-    if(a.value < b.value){
-      return 1;
-    }
-    return 0;
-  });
-  console.log(resultArray);
-  let resultword = resultArray[0].key;            //최종선택 키
-  return resultword;
+  var result = select.indexOF(Math.max(...select));          //select배열에서 최댓값
+  return result;
 }
+
+
 
 //작동원리: 질문 별 해당하는 동물이 있고, 질문이 끝난 후 가장 많이 선택된 동물이 배정
