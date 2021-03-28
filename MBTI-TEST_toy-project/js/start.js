@@ -59,7 +59,7 @@ function addAnswer(answerText, qIdx, idx){            // idx는 goNext에서 i�
     }
     setTimeout(() => {
       var target = qnaList[qIdx].a[idx].type;          // qIdx번째 질문에 대한 사용자의 idx번째 답의 type
-      for(let i = 0; i < target.type.length; i++){
+      for(let i = 0; i < target.length; i++){
         select[target[i]] += 1;                        // 사용자가 버튼 클릭 시, 12간지 순서대로 해당 target의 값이 1씩 증가
       }
 
@@ -82,15 +82,32 @@ function goResult(){
       qna.style.display = "none";            //qna 사라지기
       result.style.display = "block";        //result 나타나기
     }, 450)})
+    setResult()
     calResult();
   }
 
 // 결과 알고리즘 함수
 function calResult(){
-  var result = select.indexOF(Math.max(...select));          //select배열에서 최댓값
+  var result = select.indexOf(Math.max(...select));          //select배열에서 최댓값
   return result;
 }
 
+// 결과 도출 함수
+function setResult(){
+  let point = calResult();
+  const resultName = document.querySelector('.resultname');   //동물 이름
+  resultName.innerHTML = infoList[point].name;
 
+  var resultImg = document.createElement('img');              //동물 사진
+  const imgDiv = document.querySelector('#resultImg');
+  var imgURL = 'img/image-' + point + '.png';
+  resultImg.src = imgURL;
+  resultImg.alt = point;                  //공유하기 때 사용
+  resultImg.classList.add('img-fluid');   //resultImg의 사진크기 조절
+  imgDiv.appendChild(resultImg);          //imgDiv에 연결
+
+  const resultDesc = document.querySelector('.resultDesc');
+  resultDesc.innerHTML = infoList[point].desc;
+}
 
 //작동원리: 질문 별 해당하는 동물이 있고, 질문이 끝난 후 가장 많이 선택된 동물이 배정
