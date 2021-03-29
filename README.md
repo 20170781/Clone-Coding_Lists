@@ -18,4 +18,4 @@ Inflearn에 있는 '판다코딩'을 통해 HTML, CSS, Js를 이용하여 나만
 
 (https://lovetype-toyproject.netlify.app/page/result-10.html)
 
-![image-20210329161706403](C:\Users\이강현\AppData\Roaming\Typora\typora-user-images\image-20210329161706403.png)
+![위 링크를 통해 확인해주세요:)](C:\Users\이강현\dog.jpg)
