@@ -7,6 +7,14 @@
   border-radius: 20px;
 }
 
+/* 공유를 위한 css */
+#shareResult{
+  background-color: whitesmoke;
+  width: 80%;
+  text-align: center;
+  border-radius: 20px;
+}
+
 .resultDesc{
   font-size: 18px;
 }
@@ -27,4 +35,18 @@
   /* 버튼위에 마우스 올렸을 시, 클릭 시 x */
   background-color: whitesmoke;
   color: #FEE500;
+}
+
+.gohome{
+  color: black;
+  background-color: pink;
+  font-size: 20px;
+  border: 0px;
+  border-radius: 10px;
+}
+
+.gohome:hover, .gohome:focus {
+  /* 버튼위에 마우스 올렸을 시, 클릭 시 x */
+  background-color: whitesmoke;
+  color: pink;
 }

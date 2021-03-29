@@ -25,7 +25,7 @@ grid system: 'container class' 안에 선언되어야 사용가능
   <meta property="og:title" content="십이간지 연애유형" />           <!-- 웹사이트 제목 -->
   <meta property="og:type" content="website" />                     <!-- 공유하는 url 타입 -->
   <meta property="og:image" content="img/share.png" />              <!-- 공유 img -->
-  <meta property="og:description" content="십이간지로 알아보는 나의 연애유형" /> <!-- 공유 설명 -->
+  <meta property="og:description" content="퀴즈로 알아보는 나의 연애유형" /> <!-- 공유 설명 -->
   <title>십이간지 연애유형</title>
 
   <!-- favicon(웹사이트 왼쪽 상단 로고) -->
@@ -41,6 +41,11 @@ grid system: 'container class' 안에 선언되어야 사용가능
   <link rel="stylesheet" href="./css/qna.css"> <!-- qna.css와 연결 -->
   <link rel="stylesheet" href="./css/result.css"> <!-- result.css와 연결 -->
   <link rel="stylesheet" href="./css/animation.css"> <!-- animation.css와 연결 -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>    <!-- kakao 공유(JavaScript SDK 포함하기) -->
+  <script>
+    Kakao.init('27d50bd8843dfd3739fb6b8325a84800');  // kakao myapplication JavaScript key(삭제!!!!!!!!!!)
+    Kakao.isInitialized();
+  </script>
 </head>
 
 <body>
@@ -84,7 +89,6 @@ grid system: 'container class' 안에 선언되어야 사용가능
     <section id="result" class="mx-auto my-5 py-5 px-3">
       <h1>당신의 결과는?!</h1>
       <div class="resultname">     <!-- 동물 -->
-
       </div>
       <div id="resultImg" class="col-lg-6 col-md-8 col-sm-10 col-12 my-3 mx-auto">  <!-- 사용자별 이미지 -->
 
@@ -92,10 +96,12 @@ grid system: 'container class' 안에 선언되어야 사용가능
       <div class="resultDesc">     <!-- 내용 -->
 
       </div>
-      <button type="button" class="kakao mt-3 py-2 px-3">공유하기</button>
-    </section>  <!-- javsscript 심기(body태그 끝나는 부분) -->
+      <button type="button" class="kakao mt-3 py-2 px-3" onclick="js:setShare()">공유하기</button>
+    </section>
+    <!-- javsscript 심기(body태그 끝나는 부분) -->
     <script src="./js/data.js" charset="utf-8"></script>
     <script src="./js/start.js" charset="utf-8"></script>
+    <script src="./js/share.js" charset="utf-8"></script>
   </div>
 </body>
 
