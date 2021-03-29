@@ -10,7 +10,7 @@ Inflearn에 있는 'JEJU CODING' 을 통해 HTML, CSS, JS의 기본적인 내용
 
 
 
-### 2. 응용(Toy-project)
+### 2. 응용(Toy-Project)
 
 Inflearn에 있는 '판다코딩'을 통해 HTML, CSS, Js를 이용하여 나만의 심리테스트 사이트 만들기
 
@@ -18,4 +18,4 @@ Inflearn에 있는 '판다코딩'을 통해 HTML, CSS, Js를 이용하여 나만
 
 (https://lovetype-toyproject.netlify.app/page/result-10.html)
 
-![위 링크를 통해 확인해주세요:)](C:\Users\이강현\dog.jpg)
+<img width=80% src="https://user-images.githubusercontent.com/70627979/112802036-9c8a0e00-90ac-11eb-92d0-c866d419de4a.jpg">
