@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to KoKoa Talk</title>
+    <title>Welcome to KaKao Talk</title>
     <!-- for icons -->
     <script
       src="https://kit.fontawesome.com/6478f529f2.js"
@@ -12,6 +12,7 @@
     ></script>
   </head>
   <body>
+    <!-- status bar -->
     <div class="status-bar">
       <div class="status-bar__column">
         <span>18:43</span>
@@ -23,8 +24,21 @@
         <span></span>
         <i class="fas fa-wifi"></i>
         <i class="fas fa-battery-three-quarters"></i>
-        <!-- Lightning Icon -->
       </div>
     </div>
+    <!-- header -->
+    <header class="welcome-header">
+      <h1 class="welcome-header__title">Welcome to KaKaoTalk</h1>
+      <p class="welcome-header__text">
+        If you have a KaKao Account, log in with your email or phone number
+      </p>
+    </header>
+    <!-- form -->
+    <form id="login-form">
+      <input type="text" placeholder="Email or phone number" />]
+      <input type="passwordt" placeholder="Password" />
+      <input type="submit" value="Log In" />
+      <a href="#">Find KaKao Account or Password</a>
+    </form>
   </body>
 </html>
