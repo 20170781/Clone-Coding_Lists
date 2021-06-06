@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="css/styles.css" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,12 +19,9 @@
         <span>18:43</span>
       </div>
       <div class="status-bar__column">
-        <span>No Service</span>
-      </div>
-      <div class="status-bar__column">
-        <span></span>
         <i class="fas fa-wifi"></i>
-        <i class="fas fa-battery-three-quarters"></i>
+        <span>77%</span>
+        <i class="fas fa-battery-full fa-lg"></i>
       </div>
     </div>
     <!-- header -->
@@ -34,9 +32,9 @@
       </p>
     </header>
     <!-- form -->
-    <form id="login-form">
-      <input type="text" placeholder="Email or phone number" />]
-      <input type="passwordt" placeholder="Password" />
+    <form action="friends.html" method="get" id="login-form">
+      <input name="username" type="text" placeholder="Email or phone number" />
+      <input name="password" type="passwordt" placeholder="Password" />
       <input type="submit" value="Log In" />
       <a href="#">Find KaKao Account or Password</a>
     </form>
