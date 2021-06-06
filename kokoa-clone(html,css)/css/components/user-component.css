@@ -1,0 +1,42 @@
+.user-component,
+.user-component__column:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-component__img {
+  width: 70px;
+  height: 70px;
+  border-radius: 30px;
+  margin-right: 20px;
+}
+
+.user-component__name {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.user-componenet__subtitle {
+  margin-top: 5px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.user-component__img--myself {
+  width: 80px;
+  height: 80px;
+}
+
+.user-component__img--friends {
+  width: 60px;
+  height: 60px;
+  border-radius: 25px;
+}
+
+.user-component__name--not-bold {
+  font-weight: 400;
+}
+
+.user-component__column:last-child {
+  color: rgba(0, 0, 0, 0.5);
+}
