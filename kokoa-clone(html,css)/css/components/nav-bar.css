@@ -25,11 +25,10 @@
 }
 
 .nav__dot {
+  position: relative;
   background-color: tomato;
   width: 4px;
   height: 4px;
   border-radius: 2px;
-  position: absolute;
-  right: -3px;
-  top: -1px;
+  left: 20px;
 }

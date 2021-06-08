@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chats - KaKao Talk</title>
+    <title>Find - KaKao Talk</title>
     <!-- for status icons -->
     <script
       src="https://kit.fontawesome.com/6478f529f2.js"
@@ -26,38 +26,37 @@
       </div>
     </div>
 
-    <!-- Screen-header(Chats) -->
+    <!-- Screen-header(Find) -->
     <header class="screen-header">
-      <h1 class="screen-header__title">Chats</h1>
+      <h1 class="screen-header__title">Find</h1>
       <div class="screen-header__icons">
         <div><i class="fas fa-search fa-lg"></i></div>
-        <div><i class="far fa-comment-dots fa-lg"></i></div>
-        <div><i class="fas fa-music fa-lg"></i></div>
         <div>
-          <i class="fas fa-cog fa-lg"></i>
-          <div class="screen-header__dot"></div>
+          <i class="fas fa-cog fa-lg">
+            <div class="screen-header__dot"></div>
+          </i>
         </div>
       </div>
     </header>
 
-    <!-- Chat-screen -->
+    <!-- Main-screen -->
     <main class="main-screen">
-      <div class="user-component">
-        <div class="user-component__column">
-          <img
-            src="https://avatars.githubusercontent.com/u/70627979?v=4"
-            class="user-component__img user-component__img"
-          />
-          <div class="user-component__text">
-            <h4 class="user-component__name">Alex</h4>
-            <h6 class="user-componenet__subtitle">
-              Please check My Kakao Account Info
-            </h6>
-          </div>
+      <div class="find-icons">
+        <div class="find-icons__icon">
+          <i class="fas fa-qrcode fa"></i>
+          <span>QR Code</span>
         </div>
-        <div class="user-component__column">
-          <span class="user-component__time">21:22</span>
-          <div class="badge">1</div>
+        <div class="find-icons__icon">
+          <i class="far fa-address-book fa"></i>
+          <span>Add by Contacts</span>
+        </div>
+        <div class="find-icons__icon">
+          <i class="fas fa-fingerprint fa"></i>
+          <span>Add by ID</span>
+        </div>
+        <div class="find-icons__icon">
+          <i class="far fa-envelope fa"></i>
+          <span>Invite</span>
         </div>
       </div>
     </main>
@@ -73,7 +72,7 @@
         <li class="nav__btn">
           <a class="nav__link" href="chats.html">
             <span class="nav__notification badge">1</span>
-            <i class="fas fa-comment fa-lg"></i
+            <i class="far fa-comment fa-lg"></i
           ></a>
         </li>
         <li class="nav__btn">
