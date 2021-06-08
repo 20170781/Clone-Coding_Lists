@@ -1,0 +1,37 @@
+.find-icons {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 25px;
+}
+
+.find-icons__icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.find-icons__icon i {
+  font-size: 30px;
+}
+
+.find-icons__icon span {
+  margin-top: 15px;
+}
+
+.recommended-friends {
+  border-top: var(--main-border);
+  border-bottom: var(--main-border);
+  padding: 25px 0px;
+}
+
+.recommended-friends__title {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.recommended-friends span {
+  display: block;
+  margin: 100px 0;
+  text-align: center;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.5);
+}
