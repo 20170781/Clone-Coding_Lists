@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Find - KaKao Talk</title>
+    <title>More - KaKao Talk</title>
     <!-- for status icons -->
     <script
       src="https://kit.fontawesome.com/6478f529f2.js"
@@ -28,9 +28,10 @@
 
     <!-- Screen-header(Find) -->
     <header class="screen-header">
-      <h1 class="screen-header__title">Find</h1>
+      <h1 class="screen-header__title">More</h1>
       <div class="screen-header__icons">
         <div><i class="fas fa-search fa-lg"></i></div>
+        <div><i class="fas fa-music fa-lg"></i></div>
         <div>
           <i class="fas fa-cog fa-lg">
             <div class="screen-header__dot"></div>
@@ -40,59 +41,53 @@
     </header>
 
     <!-- Main-screen -->
-    <main class="main-screen">
-      <!-- Icon lists -->
+    <main class="main-screen more-screen">
+      <!-- My-profile -->
+      <div class="user-component">
+        <div class="user-component__column">
+          <img
+            src="https://avatars.githubusercontent.com/u/70627979?v=4"
+            class="user-component__img user-component__img--myself"
+          />
+          <div class="user-component__text">
+            <h4 class="user-component__name">Alex</h4>
+            <div class="user-componenet__subtitle">
+              <h6>010-2267-****</h6>
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+          </div>
+        </div>
+        <div class="user-component__column">
+          <i class="far fa-comment-alt fa-2x"></i>
+        </div>
+      </div>
+      <!-- Icon-list -->
       <div class="icon-row">
         <div class="icon-row__icon">
-          <i class="fas fa-qrcode fa"></i>
-          <span>QR Code</span>
+          <i class="far fa-calendar"></i>
+          <span>Calendar</span>
         </div>
         <div class="icon-row__icon">
           <i class="far fa-address-book fa"></i>
-          <span>Add by Contacts</span>
+          <span>Talk Drive</span>
         </div>
         <div class="icon-row__icon">
-          <i class="fas fa-fingerprint fa"></i>
-          <span>Add by ID</span>
+          <i class="far fa-smile-beam"></i>
+          <span>Emoticons</span>
         </div>
         <div class="icon-row__icon">
-          <i class="far fa-envelope fa"></i>
-          <span>Invite</span>
+          <i class="fas fa-paint-roller"></i>
+          <span>Themes</span>
         </div>
       </div>
-      <!-- Recommended-friends -->
-      <div class="recommended-friends">
-        <h6 class="recommended-friends__title">Recommended Friends</h6>
-        <span>You have no recommended friends.</span>
-      </div>
-      <!-- Open-chat -->
-      <div class="open-chat">
-        <div class="open-chat__header">
-          <h4>Open Chat</h4>
-          <span>
-            Go to Openchat Home
-            <i class="fas fa-chevron-right fa-xs"></i>
-          </span>
-        </div>
-        <div class="open-post">
-          <div class="open-post__column">
-            <h5 class="open-post__title">#BTS</h5>
-            <h6 class="open-post__hashtags">#bts#army#friends</h6>
-            <div class="open-post__members">
-              <img src="https://avatars.githubusercontent.com/u/70627979?v=4" />
-              <span class="open-post__member-count">802 members</span>
-              <div class="divider"></div>
-              <span class="open-post__member-status">Active</span>
+      <div class="more-suggestions">
+        <h4 class="more-suggestions__title">Suggestions</h4>
+        <div class="more-suggestions__icons">
+          <div class="more-suggestions__icon">
+            <div class="more-suggestions__icon-image">
+              <i class="fas fa-quote-right fa-2x"></i>
             </div>
-          </div>
-          <div class="open-post__column">
-            <div class="open-post__photo">
-              <img src="https://avatars.githubusercontent.com/u/70627979?v=4" />
-              <div class="open-post__heart-count">
-                <i class="fas fa-heart fa-xs"></i>
-                <span>326</span>
-              </div>
-            </div>
+            <span class="more-suggestions__icon-text">KaKao Story</span>
           </div>
         </div>
       </div>

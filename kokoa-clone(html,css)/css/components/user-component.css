@@ -18,8 +18,13 @@
 }
 
 .user-componenet__subtitle {
+  display: flex;
   margin-top: 5px;
   color: rgba(0, 0, 0, 0.5);
+}
+
+.user-componenet__subtitle h6 {
+  margin-right: 10px;
 }
 
 .user-component__img--myself {
