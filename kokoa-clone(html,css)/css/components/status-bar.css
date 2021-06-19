@@ -7,4 +7,6 @@
   box-sizing: border-box;
   margin: 0 3px;
   padding: 5px 5px;
+  background-color: inherit;
+  z-index: 2;
 }
