@@ -79,3 +79,65 @@
 .message-row--own .message__info {
   flex-direction: row-reverse;
 }
+
+.reply {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  padding: 5px 25px;
+  box-sizing: border-box;
+}
+
+.reply .relply__column:first-child {
+  width: 10%;
+}
+
+.reply .relply__column:last-child {
+  width: 90%;
+  position: relative;
+}
+
+.reply input {
+  padding: 5px;
+  height: 30px;
+  width: 100%;
+  border: var(--main-border);
+  border-radius: 20px;
+}
+
+.relply__column:last-child > i,
+.relply__column:last-child button {
+  position: absolute;
+  right: -5px;
+  top: 6px;
+}
+
+.relply__column:last-child > i {
+  right: 35px;
+  top: 15px;
+}
+
+.relply__column button {
+  background-color: var(--yellow);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.relply__column button: :focus,
+.relply__column button: :active {
+  outline: none;
+}
+
+.reply i {
+  opacity: 0.5;
+}
+
+.relply__column button i {
+  opacity: 1;
+}
