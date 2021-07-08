@@ -6,25 +6,25 @@ const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
 function onLoginSubmit(event) {
-    // event.preventDefault();       // prevent browser's basic work
-    loginForm.classList.add(HIDDEN_CLASSNAME);
+  // event.preventDefault();       // prevent browser's basic work
+  loginForm.classList.add(HIDDEN_CLASSNAME);
 
-    localStorage.setItem(USERNAME_KEY, loginInput.value);
-    paintGreetings();
+  localStorage.setItem(USERNAME_KEY, loginInput.value);
+  paintGreetings();
 }
 
 // when refresh
 function paintGreetings() {
-    const username = localStorage.getItem(USERNAME_KEY);
-    greeting.innerText = `Hello ${username}`;
-    greeting.classList.remove(HIDDEN_CLASSNAME);
+  const username = localStorage.getItem(USERNAME_KEY);
+  greeting.innerText = `Hello ${username}`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 
-if(savedUsername === null){
-    loginForm.classList.remove(HIDDEN_CLASSNAME);
-    loginForm.addEventListener("submit", onLoginSubmit);
+if (savedUsername === null) {
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener("submit", onLoginSubmit);
 } else {
-    paintGreetings();
+  paintGreetings();
 }
