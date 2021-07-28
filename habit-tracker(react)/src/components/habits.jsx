@@ -1,8 +1,8 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import Habit from "./habit";
 import HabitAddForm from "./habitAddForm";
 
-class Habits extends PureComponent {
+class Habits extends Component {
   render() {
     return (
       <>
