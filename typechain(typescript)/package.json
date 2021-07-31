@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc-watch --onSuccess \" node dist/index.js \" "
+    "prettier": "prettier --write --config ./.prettierrc \"**/*.{ts,tsx}\"",
+    "lint": "eslint './src/**/*.{ts,tsx}'",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx}'"
   },
   "keywords": [],
   "author": "",

@@ -2,7 +2,11 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'react-hooks'],
   extends: [
-    'airbnb-base',
+    'airbnb',
+    'airbnb/hooks',
+    'prettier',
+    'prettier/react',
+    'prettier/@typescript-eslint',
     'plugin:react/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:import/errors',
