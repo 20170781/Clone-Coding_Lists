@@ -1,30 +1,26 @@
-let todoList: { id: number; title: string; done: boolean }[] = [
+interface Todo {
+  id: number;
+  title: string;
+  done: boolean;
+}
+
+let todoList: Todo[] = [
   { id: 1, title: "todo 완성", done: false },
   { id: 2, title: "TypeScript 마스터", done: false },
 ];
 
-const addList = (item: {
-  id: number;
-  title: string;
-  done: boolean;
-}): { id: number; title: string; done: boolean }[] => {
+const addList = (item: Todo): Todo[] => {
   const toDos = [...todoList];
   toDos.push(item);
   return toDos;
 };
 
-const deleteList = (
-  deleteID: number
-): { id: number; title: string; done: boolean }[] => {
-  const toDos = todoList.filter(
-    (item: { id: number; title: string; done: boolean }) => item.id !== deleteID
-  );
+const deleteList = (deleteID: number): Todo[] => {
+  const toDos = todoList.filter((item: Todo) => item.id !== deleteID);
   return toDos;
 };
 
-const completeList = (
-  completeID: number
-): { id: number; title: string; done: boolean }[] => {
+const completeList = (completeID: number): Todo[] => {
   const toDos = [...todoList];
   toDos.forEach((item) =>
     item.id === completeID ? (item.done = true) : item.done
@@ -38,9 +34,9 @@ inputBox.type = "text";
 const ulBox = document.createElement("ul");
 
 //생성 (삭제, 성공 버튼 추가)
-const makeList = (items: { id: number; title: string; done: boolean }[]) => {
+const makeList = (items: Todo[]) => {
   ulBox.innerHTML = "";
-  items.forEach((item: { id: number; title: string; done: boolean }) => {
+  items.forEach((item: Todo) => {
     const list = document.createElement("li");
     const del = document.createElement("button");
     const chg = document.createElement("button");
