@@ -11,9 +11,14 @@ changeColor.addEventListener('click', async () => {
 
   chrome.scripting.executeScript({
     target: { tabId: tab.id },
-    function: setPageBackgroundColor,
+    function: getTitle,
   });
 });
+
+function getTitle() {
+  console.log(document.body);
+  return document.title;
+}
 
 // The body of this function will be executed as a content script inside the current page
 function setPageBackgroundColor() {
