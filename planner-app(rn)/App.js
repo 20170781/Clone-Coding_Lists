@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,17 +7,31 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { theme } from './colors';
+
+const STORAGE_KEY = '@todos-key';
 
 export default function App() {
   const [working, setWorking] = useState(true);
   const [text, setText] = useState('');
   const [todos, setTodos] = useState({});
 
+  useEffect(() => {
+    readData();
+  }, []);
+
   const showOthers = () => setWorking(false);
   const showWork = () => setWorking(true);
   const onChangeText = (payload) => setText(payload);
-  const addTodo = () => {
+  const storeData = async (data) => {
+    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+  };
+  const readData = async () => {
+    const data = await AsyncStorage.getItem(STORAGE_KEY);
+    data && setTodos(JSON.parse(data));
+  };
+  const addTodo = async () => {
     if (text === '') return;
 
     const newTodos = {
@@ -25,6 +39,7 @@ export default function App() {
       [Date.now()]: { text, working, done: false },
     };
     setTodos(newTodos);
+    await storeData(newTodos);
     setText('');
   };
 
