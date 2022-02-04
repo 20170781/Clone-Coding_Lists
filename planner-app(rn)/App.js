@@ -1,11 +1,25 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
 import { theme } from './colors';
 
 export default function App() {
   const [working, setWorking] = useState(true);
+  const [text, setText] = useState('');
+
   const showOthers = () => setWorking(false);
   const showWork = () => setWorking(true);
+  const onChangeText = (payload) => setText(payload);
+  const addTodo = () => {
+    if (text === '') return;
+
+    setText('');
+  };
 
   return (
     <View style={styles.container}>
@@ -31,6 +45,14 @@ export default function App() {
           </Text>
         </TouchableOpacity>
       </View>
+      <TextInput
+        onChangeText={onChangeText}
+        onSubmitEditing={addTodo}
+        placeholder="Add a To Do"
+        value={text}
+        returnKeyType="done"
+        style={styles.input}
+      />
     </View>
   );
 }
@@ -49,5 +71,13 @@ const styles = StyleSheet.create({
   header_btn: {
     fontSize: 32,
     fontWeight: '600',
+  },
+  input: {
+    backgroundColor: 'white',
+    paddingVertical: 13,
+    paddingHorizontal: 20,
+    borderRadius: 30,
+    marginTop: 20,
+    fontSize: 16,
   },
 });
