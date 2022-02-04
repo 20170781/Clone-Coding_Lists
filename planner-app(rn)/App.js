@@ -5,12 +5,14 @@ import {
   View,
   TouchableOpacity,
   TextInput,
+  ScrollView,
 } from 'react-native';
 import { theme } from './colors';
 
 export default function App() {
   const [working, setWorking] = useState(true);
   const [text, setText] = useState('');
+  const [todos, setTodos] = useState({});
 
   const showOthers = () => setWorking(false);
   const showWork = () => setWorking(true);
@@ -18,6 +20,11 @@ export default function App() {
   const addTodo = () => {
     if (text === '') return;
 
+    const newTodos = {
+      ...todos,
+      [Date.now()]: { text, working, done: false },
+    };
+    setTodos(newTodos);
     setText('');
   };
 
@@ -53,6 +60,15 @@ export default function App() {
         returnKeyType="done"
         style={styles.input}
       />
+      <ScrollView>
+        {Object.keys(todos).map((key) => {
+          return todos[key].working === working ? (
+            <View key={key} style={styles.todo}>
+              <Text style={styles.todo_text}>{todos[key].text}</Text>
+            </View>
+          ) : null;
+        })}
+      </ScrollView>
     </View>
   );
 }
@@ -77,7 +93,19 @@ const styles = StyleSheet.create({
     paddingVertical: 13,
     paddingHorizontal: 20,
     borderRadius: 30,
-    marginTop: 20,
+    marginVertical: 20,
     fontSize: 16,
+  },
+  todo: {
+    backgroundColor: theme.todoBg,
+    marginBottom: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+  },
+  todo_text: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
   },
 });
