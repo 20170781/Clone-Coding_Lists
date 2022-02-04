@@ -21,16 +21,25 @@ export default function App() {
     readData();
   }, []);
 
+  const storeData = async (data) => {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    } catch (error) {
+      // 에러 처리
+    }
+  };
+  const readData = async () => {
+    try {
+      const data = await AsyncStorage.getItem(STORAGE_KEY);
+      data && setTodos(JSON.parse(data));
+    } catch (error) {
+      // 에러 처리
+    }
+  };
+
   const showOthers = () => setWorking(false);
   const showWork = () => setWorking(true);
   const onChangeText = (payload) => setText(payload);
-  const storeData = async (data) => {
-    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  };
-  const readData = async () => {
-    const data = await AsyncStorage.getItem(STORAGE_KEY);
-    data && setTodos(JSON.parse(data));
-  };
   const addTodo = async () => {
     if (text === '') return;
 
