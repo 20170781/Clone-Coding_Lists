@@ -6,8 +6,10 @@ import {
   TouchableOpacity,
   TextInput,
   ScrollView,
+  Alert,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Fontisto } from '@expo/vector-icons';
 import { theme } from './colors';
 
 const STORAGE_KEY = '@todos-key';
@@ -42,7 +44,6 @@ export default function App() {
   const onChangeText = (payload) => setText(payload);
   const addTodo = async () => {
     if (text === '') return;
-
     const newTodos = {
       ...todos,
       [Date.now()]: { text, working, done: false },
@@ -50,6 +51,20 @@ export default function App() {
     setTodos(newTodos);
     await storeData(newTodos);
     setText('');
+  };
+  const deleteTodo = (key) => {
+    Alert.alert('Delete To Do', 'Are you sure?', [
+      { text: 'Cancel' },
+      {
+        text: "I'm Sure",
+        onPress: () => {
+          const filteredTodos = { ...todos };
+          delete filteredTodos[key];
+          setTodos(filteredTodos);
+          storeData(filteredTodos);
+        },
+      },
+    ]);
   };
 
   return (
@@ -89,6 +104,9 @@ export default function App() {
           return todos[key].working === working ? (
             <View key={key} style={styles.todo}>
               <Text style={styles.todo_text}>{todos[key].text}</Text>
+              <TouchableOpacity onPress={() => deleteTodo(key)}>
+                <Fontisto name="trash" size={20} color="darkgrey" />
+              </TouchableOpacity>
             </View>
           ) : null;
         })}
@@ -121,6 +139,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   todo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     backgroundColor: theme.todoBg,
     marginBottom: 10,
     paddingVertical: 20,
