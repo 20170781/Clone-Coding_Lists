@@ -32,7 +32,7 @@ button {
   border-radius: 50%;
 }
 
-.habits {
+.todos {
   padding: 0.5em;
   padding-top: 2em;
 }
@@ -53,13 +53,13 @@ button {
   color: white;
 }
 
-.habit {
+.todo {
   font-size: 2.5rem;
   padding: 0.5em;
   list-style: none;
 }
 
-.habit-count {
+.todo-count {
   display: inline-block;
   text-align: center;
   font-size: 2rem;
@@ -73,27 +73,27 @@ button {
   border-radius: 50%;
 }
 
-.habit-button {
+.todo-button {
   font-size: 2.5rem;
   margin: 0 0.1em;
   background-color: transparent;
 }
 
-.habit-button:hover {
+.todo-button:hover {
   opacity: 0.8;
 }
 
-.habit-increase,
-.habit-decrease {
+.todo-increase,
+.todo-decrease {
   color: goldenrod;
 }
 
-.habit-delete {
+.todo-delete {
   font-size: 2rem;
   color: darkred;
 }
 
-.habits-reset {
+.todos-reset {
   font-size: 1.5rem;
   padding: 0.2em 1em;
   background-color: green;

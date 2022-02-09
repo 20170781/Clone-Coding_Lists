@@ -1,13 +1,13 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
-const HabitAddForm = memo((props) => {
+const AddForm = memo((props) => {
   const inputRef = React.createRef();
 
   const onSubmit = (event) => {
     event.preventDefault();
     const name = inputRef.current.value;
     name && props.onAdd(name);
-    inputRef.current.value = "";
+    inputRef.current.value = '';
   };
 
   return (
@@ -16,11 +16,11 @@ const HabitAddForm = memo((props) => {
         ref={inputRef}
         type="text"
         className="add-input"
-        placeholder="Habit"
+        placeholder="To-do"
       />
       <button className="add-button">Add</button>
     </form>
   );
 });
 
-export default HabitAddForm;
+export default AddForm;
