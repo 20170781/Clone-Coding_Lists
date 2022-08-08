@@ -55,13 +55,27 @@ SPDX-License-Identifier: Apache-2.0
 
         bridge.call(url, JSON.stringify(params));
       }
+
+      function serviceOn() {
+        console.log('call my service');
+        const url = 'luna://com.test.app.service/serviceOn';
+        const params = {};
+        bridge.onservicecallback = (msg) => {
+          console.log(msg);
+          let res = JSON.parse(msg);
+          document.getElementById('txt_msg').innerHTML = res.Response;
+        };
+
+        bridge.call(url, JSON.stringify(params));
+      }
     </script>
   </head>
   <body>
     <div>
       <h1 id="txt_msg">Hello, Web Application!!</h1>
-      <button id="time" onclick="callHello()">hello</button>
-      <button id="time" onclick="callToast()">toast</button>
+      <button onclick="callHello()">hello</button>
+      <button onclick="callToast()">toast</button>
+      <button onclick="serviceOn()">Heartbeat</button>
     </div>
   </body>
 </html>

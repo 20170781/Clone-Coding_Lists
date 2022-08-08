@@ -48,6 +48,53 @@ service.register('toast', (msg) => {
   );
 });
 
+// heartbeat subscribe
+service.register('serviceOn', (message) => {
+  console.log(logHeader, message);
+
+  const max = 5;
+  let i = 0;
+  let interval = setInterval(() => {
+    let url = 'luna://com.webos.notification/createToast';
+    let params = {
+      message: `Hello! +${i}`,
+    };
+
+    service.call(url, params, (m2) => {
+      console.log(
+        logHeader,
+        'SERVICE_METHOD_CALLED:com.webos.notification/createToast'
+      );
+    });
+
+    if (++i > max) {
+      clearInterval(interval);
+    }
+  }, 3000);
+
+  //heartbeat 구독
+  const sub = service.subscribe('luna://com.test.app.service/heartbeat', {
+    subscribe: true,
+  });
+  const heartbeatMax = 120;
+  let heartbeatCnt = 0;
+  sub.addListener('response', function (msg) {
+    console.log(JSON.stringify(msg.payload));
+    if (++heartbeatCnt > heartbeatMax) {
+      sub.cancel();
+      setTimeout(function () {
+        console.log(heartbeatMax + ' responses received, exiting...');
+        process.exit(0);
+      }, 1000);
+    }
+  });
+
+  message.respond({
+    returnValue: true,
+    Response: 'My service has been started.',
+  });
+});
+
 // set some state in the service
 service.register('/config/setGreeting', function (message) {
   console.log(logHeader, 'SERVICE_METHOD_CALLED:/config/setGreeting');
@@ -86,17 +133,15 @@ service.register('time', function (message) {
   );
 });
 
-// handle subscription requests
 const subscriptions = {};
-let interval;
+let heartbeatinterval;
 let x = 1;
-function createInterval() {
-  if (interval) {
+function createHeartBeatInterval() {
+  if (heartbeatinterval) {
     return;
   }
-  console.log(logHeader, 'create_interval');
-  console.log('create new interval');
-  interval = setInterval(function () {
+  console.log(logHeader, 'create_heartbeatinterval');
+  heartbeatinterval = setInterval(function () {
     sendResponses();
   }, 1000);
 }
@@ -119,39 +164,95 @@ function sendResponses() {
   x++;
 }
 
-// listen for requests, and handle subscriptions via implicit event handlers in call
-// to register
-service.register(
-  'heartbeat',
-  function (message) {
-    const uniqueToken = message.uniqueToken;
-    console.log(logHeader, 'SERVICE_METHOD_CALLED:/heartbeat');
-    console.log(
-      'heartbeat callback, uniqueToken: ' +
-        uniqueToken +
-        ', token: ' +
-        message.token
-    );
-    message.respond({ event: 'beat' });
-    if (message.isSubscription) {
-      subscriptions[uniqueToken] = message;
-      if (!interval) {
-        createInterval();
-      }
-    }
-  },
-  function (message) {
-    const uniqueToken = message.uniqueToken;
-    console.log('Canceled ' + uniqueToken);
-    delete subscriptions[uniqueToken];
-    const keys = Object.keys(subscriptions);
-    if (keys.length === 0) {
-      console.log('no more subscriptions, canceling interval');
-      clearInterval(interval);
-      interval = undefined;
+const heartbeat = service.register('heartbeat');
+heartbeat.on('request', function (message) {
+  console.log(logHeader, 'SERVICE_METHOD_CALLED:/heartbeat');
+  message.respond({ event: 'beat' }); // initial response
+  if (message.isSubscription) {
+    subscriptions[message.uniqueToken] = message; //add message to "subscriptions"
+    if (!heartbeatinterval) {
+      createHeartBeatInterval();
     }
   }
-);
+});
+
+heartbeat.on('cancel', function (message) {
+  delete subscriptions[message.uniqueToken]; // remove message from "subscriptions"
+  const keys = Object.keys(subscriptions);
+  if (keys.length === 0) {
+    // count the remaining subscriptions
+    console.log('no more subscriptions, canceling interval');
+    clearInterval(heartbeatinterval);
+    heartbeatinterval = undefined;
+  }
+});
+
+// handle subscription requests
+// const subscriptions = {};
+// let interval;
+// let x = 1;
+// function createInterval() {
+//   if (interval) {
+//     return;
+//   }
+//   console.log(logHeader, 'create_interval');
+//   console.log('create new interval');
+//   interval = setInterval(function () {
+//     sendResponses();
+//   }, 1000);
+// }
+
+// // send responses to each subscribed client
+// function sendResponses() {
+//   console.log(logHeader, 'send_response');
+//   console.log(
+//     'Sending responses, subscription count=' + Object.keys(subscriptions).length
+//   );
+//   for (const i in subscriptions) {
+//     if (Object.prototype.hasOwnProperty.call(subscriptions, i)) {
+//       const s = subscriptions[i];
+//       s.respond({
+//         returnValue: true,
+//         event: 'beat ' + x,
+//       });
+//     }
+//   }
+//   x++;
+// }
+
+// // listen for requests, and handle subscriptions via implicit event handlers in call
+// // to register
+// service.register(
+//   'heartbeat',
+//   function (message) {
+//     const uniqueToken = message.uniqueToken;
+//     console.log(logHeader, 'SERVICE_METHOD_CALLED:/heartbeat');
+//     console.log(
+//       'heartbeat callback, uniqueToken: ' +
+//         uniqueToken +
+//         ', token: ' +
+//         message.token
+//     );
+//     message.respond({ event: 'beat' });
+//     if (message.isSubscription) {
+//       subscriptions[uniqueToken] = message;
+//       if (!interval) {
+//         createInterval();
+//       }
+//     }
+//   },
+//   function (message) {
+//     const uniqueToken = message.uniqueToken;
+//     console.log('Canceled ' + uniqueToken);
+//     delete subscriptions[uniqueToken];
+//     const keys = Object.keys(subscriptions);
+//     if (keys.length === 0) {
+//       console.log('no more subscriptions, canceling interval');
+//       clearInterval(interval);
+//       interval = undefined;
+//     }
+//   }
+// );
 
 // EventEmitter-based API for subscriptions
 // note that the previous examples are actually using this API as well, they're
